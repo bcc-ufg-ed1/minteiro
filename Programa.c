@@ -3,7 +3,7 @@
 #include "MInteiro.h"
 
 int main() {
-    int v[] = {1, 3, 5, 7, 9};
+    int v[] = {5, 3, 9, 7, 1};
     int menor = 0, maior = 0, soma = 0;
 
     Dados *meusDados = inicializarDados();
