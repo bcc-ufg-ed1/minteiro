@@ -6,7 +6,6 @@ Dados* inicializarDados() {
     Dados *dados;
     if ((dados = (Dados*) malloc(sizeof(Dados))) == NULL)
         return NULL;
-
     dados->nElementos = 0;
     return dados;
 }
@@ -59,7 +58,6 @@ int obterMaior(Dados* dados, int *maior) {
         if (dados->elementos[i] > *maior)
             *maior = dados->elementos[i];
     }
-
     return OK;
 }
 
