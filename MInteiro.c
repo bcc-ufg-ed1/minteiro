@@ -14,7 +14,7 @@ int carregarDados(Dados* dados, int v[], int n) {
     if (dados == NULL)
         return ERRO_DADOS_NAO_INICIALIZADOS;
 
-    if (!vazio(d))
+    if (!vazio(dados))
         return ERRO_CONJUNTO_NAO_VAZIO;
 
     if (n > TAM_MAX)
