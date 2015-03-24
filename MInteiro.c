@@ -84,3 +84,17 @@ int vazio(Dados* dados) {
 
     return dados->nElementos == 0;
 }
+
+int pertence(Dados* d, int el) {
+    if (d == NULL)
+        return ERRO_DADOS_NAO_INICIALIZADOS;
+
+    if (vazio(d))
+        return FALSE;
+
+    for(int i = 0; i < d->nElementos; i++) {
+        if (d->elementos[i] == el)
+            return TRUE;
+    }
+    return FALSE;
+}

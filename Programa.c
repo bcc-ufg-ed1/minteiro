@@ -13,6 +13,10 @@ int main() {
     obterMaior(meusDados, &maior);
     printf("Soma = %d, Menor = %d, Maior = %d\n",
            soma, menor, maior);
+
+    if (pertence(meusDados, 1) == TRUE) {
+        printf("Deu certo!");
+    }
     descartarDados(meusDados);
 
     return EXIT_SUCCESS;
