@@ -23,5 +23,6 @@ int obterSoma(Dados* dados, int *soma);
 int obterMaior(Dados* dados, int *maior);
 int obterMenor(Dados* dados, int *menor);
 int vazio(Dados* dados);
+int pertence(Dados* d, int el);
 
 #endif // MINTEIRO_H
