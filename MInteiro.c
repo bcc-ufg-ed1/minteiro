@@ -15,14 +15,15 @@ int carregarDados(Dados* dados, int v[], int n) {
     if (dados == NULL)
         return ERRO_DADOS_NAO_INICIALIZADOS;
 
-    if (!vazio(dados))//tava so um "d"
+    if (!vazio(dados))
         return ERRO_CONJUNTO_NAO_VAZIO;
 
     if (n > TAM_MAX)
         return ERRO_CAPACIDADE_INSUFICIENTE;
 
     dados->nElementos = n;
-    for(int i = 0; i < n; i++) {
+    int i;
+    for( i= 0; i < n; i++) {
         dados->elementos[i] = v[i];
     }
     return OK;
@@ -41,7 +42,8 @@ int obterSoma(Dados* dados, int *soma) {
         return ERRO_DADOS_NAO_INICIALIZADOS;
 
     *soma = 0;
-    for(int i = 0; i < dados->nElementos; i++) {
+    int i;
+    for( i = 0; i < dados->nElementos; i++) {
         *soma = *soma + dados->elementos[i];
     }
     return OK;
@@ -55,7 +57,8 @@ int obterMaior(Dados* dados, int *maior) {
         return ERRO_CONJUNTO_VAZIO;
 
     *maior = dados->elementos[0];
-    for(int i = 1; i < dados->nElementos; i++) {
+    int i;
+    for(i = 1; i < dados->nElementos; i++) {
         if (dados->elementos[i] > *maior)
             *maior = dados->elementos[i];
     }
@@ -71,7 +74,8 @@ int obterMenor(Dados* dados, int *menor){
         return ERRO_CONJUNTO_VAZIO;
 
     *menor = dados->elementos[0];
-    for(int i = 1; i < dados->nElementos; i++) {
+    int i;
+    for(i = 1; i < dados->nElementos; i++) {
         if (dados->elementos[i] < *menor)
             *menor = dados->elementos[i];
     }
@@ -85,7 +89,7 @@ int vazio(Dados* dados) {
     return dados->nElementos == 0;
 }
 
-int obterPertence(Dados* dados, int *pertence){
+int Pertence(Dados* dados, int pertence){
 
   if (dados == NULL)
         return ERRO_DADOS_NAO_INICIALIZADOS;
@@ -95,31 +99,26 @@ int obterPertence(Dados* dados, int *pertence){
 
     int i;
     for(i = 0; i < dados->nElementos; i++){
-        if (*pertence == dados->elementos[i])
-        printf("pertence ao conjunto de elementos = %d\n",*pertence);
+        if (pertence == dados->elementos[i])
+            return TRUE;
+        return FALSE;
 
     }
       return OK;
 }
 
-int obterTamanho (Dados *dados, int *tamanho){
+int obterTamanho (Dados *dados, int* tam){
  if (dados == NULL)
         return ERRO_DADOS_NAO_INICIALIZADOS;
 
   if (vazio(dados))
         return ERRO_CONJUNTO_VAZIO;
-
-        *tamanho = 0;
-        int i;
-         for(i = 0; i < dados->nElementos; i++){
-
-            *tamanho = *tamanho + 1;
-         }
+        *tam = dados->nElementos;
 
     return OK;
 }
 
-int obterFrequencia (Dados *dados, int *frequencia){
+int obterFrequencia (Dados* dados, int *frequencia){
 
 if (dados == NULL)
         return ERRO_DADOS_NAO_INICIALIZADOS;
@@ -127,14 +126,16 @@ if (dados == NULL)
   if (vazio(dados))
         return ERRO_CONJUNTO_VAZIO;
 
-        int x = 0;
+        int contador = 0;
+
         int i;
          for(i = 0; i < dados->nElementos; i++){
             if(*frequencia == dados->elementos[i])
-                x = x+1;
+                contador++;
 
          }
-*frequencia = x;
+*frequencia = contador;
+
 return OK;
 }
 
@@ -145,13 +146,10 @@ if (dados == NULL)
   if (vazio(dados))
         return ERRO_CONJUNTO_VAZIO;
 
-        int soma = 0, i, quant =0;
-        for(i = 0; i < dados->nElementos; i++){
-            quant = quant + 1;
-            soma = soma + dados->elementos[i];
-        }
+        int soma = 0;
+      obterSoma(dados, &soma);
+      *media = soma/dados->nElementos;
 
-        *media = soma/quant;
         return OK;
 }
 int obterAmplitude(Dados *dados, int *amplitude){
@@ -161,17 +159,10 @@ int obterAmplitude(Dados *dados, int *amplitude){
   if (vazio(dados))
         return ERRO_CONJUNTO_VAZIO;
 
-        int i, maior, menor;
-        maior = dados->elementos[0];
-        menor = dados->elementos[0];
+      int maior, menor;
+    obterMaior(dados,&maior);
+    obterMenor(dados,&menor);
 
-    for(i = 1; i < dados->nElementos; i++) {
-        if (dados->elementos[i] < menor)
-            menor = dados->elementos[i];
-
-        if (dados->elementos[i] > maior)
-            maior = dados->elementos[i];
-    }
 *amplitude = maior - menor;
 
 return OK;

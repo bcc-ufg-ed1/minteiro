@@ -22,6 +22,11 @@ int descartarDados(Dados* dados);
 int obterSoma(Dados* dados, int *soma);
 int obterMaior(Dados* dados, int *maior);
 int obterMenor(Dados* dados, int *menor);
+int Pertence(Dados* dados, int pertence);
+int obterTamanho (Dados *dados, int *tam);
+int obterFrequencia (Dados *dados, int *frequencia);
+int obterAmplitude(Dados *dados, int *amplitude);
+float obterMedia(Dados *dados, float *media);
 int vazio(Dados* dados);
 
 #endif // MINTEIRO_H
